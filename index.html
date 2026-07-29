@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDEN OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div class="overlay"></div>
+
+    <!-- ========== BOTÃO DE ACESSIBILIDADE ========== -->
+    <div id="accessibilityBtn" onclick="toggleGlitchMode()" title="Reduzir flashes visuais">
+        <span>⚡</span>
+    </div>
+
+    <!-- ========== TELA DE INICIALIZAÇÃO - EDEN OS ========== -->
+    <div id="bootScreen">
+        <div class="boot-container">
+            <div class="boot-icon">⟡</div>
+            <div class="boot-title">EDEN OS</div>
+            <div class="boot-subtitle">Where Every Beginning Is Recorded.</div>
+            <button id="bootButton" onclick="iniciarSistema()">
+                <span class="boot-btn-icon">⏎</span>
+                INICIAR SISTEMA
+            </button>
+            <div class="boot-version">v.3.0 - OMEGA-5</div>
+        </div>
+    </div>
+
+    <!-- ========== TERMINAL PRINCIPAL ========== -->
+    <div class="terminal" id="terminal">
+        <div id="screen"></div>
+    </div>
+
+    <!-- ========== MODAL DO EDEN (APÓS SENHA) ========== -->
+    <div id="edenModal" style="display:none;">
+        <div class="eden-container">
+            <div class="eden-icon">⟡</div>
+            <div class="eden-title">EDEN</div>
+            <div class="eden-verse">"And the Lord God planted a garden eastward in Eden."</div>
+            <div class="eden-reference">— Genesis 2:8</div>
+            <div class="eden-welcome">Welcome back,<br>Dr. Matthias Bergman.</div>
+            <button onclick="fecharEdenModal()" class="eden-button">[ ACESSAR SISTEMA ]</button>
+        </div>
+    </div>
+
+    <!-- ARQUIVOS -->
+    <script src="database.js"></script>
+    <script src="questions.js"></script>
+    <script src="audio.js"></script>
+    <script src="utils.js"></script>
+    <script src="glitch.js"></script>
+    <script src="eden.js"></script>
+    <script src="admin.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

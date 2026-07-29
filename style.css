@@ -1,0 +1,758 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #ff1a1a;
+    font-family: Consolas, monospace;
+    overflow: hidden;
+    transition: background-color 0.05s;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        transparent 2px,
+        rgba(255,0,0,.03) 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+#background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    color: #330000;
+    opacity: .25;
+    white-space: pre-wrap;
+    font-size: 12px;
+    padding: 20px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    transition: all 0.1s;
+}
+
+.terminal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90vw, 700px);
+    padding: 30px;
+    border: 1px solid red;
+    background: rgba(0,0,0,.85);
+    box-shadow: 0 0 30px rgba(255,0,0,.2);
+    z-index: 2;
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+#screen {
+    min-height: 300px;
+    line-height: 1.8;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+    transition: color 0.1s, transform 0.1s;
+}
+
+/* ========== CURSOR PISCANTE ========== */
+.cursor {
+    display: inline-block;
+    background: red;
+    width: 2px;
+    height: 1.2em;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ========== INPUTS E BOTOES ========== */
+input {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: black;
+    border: 1px solid red;
+    color: red;
+    font-size: 18px;
+    font-family: inherit;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: inherit;
+}
+
+button:hover {
+    background: #ff1a1a;
+    color: black;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 700px) {
+    .terminal {
+        padding: 20px;
+        width: 95vw;
+    }
+    #screen {
+        font-size: 15px;
+    }
+}
+
+/* ========== TELA DE INICIALIZAÇÃO - EDEN OS ========== */
+#bootScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#bootScreen.fade-out {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+}
+
+.boot-container {
+    text-align: center;
+    padding: 50px;
+    max-width: 600px;
+    width: 90%;
+}
+
+.boot-icon {
+    font-size: 80px;
+    color: #ff1a1a;
+    margin-bottom: 10px;
+    animation: bootIconFloat 3s ease-in-out infinite;
+    display: block;
+    font-family: Georgia, serif;
+}
+
+@keyframes bootIconFloat {
+    0%, 100% { transform: translateY(0px); opacity: 1; }
+    50% { transform: translateY(-15px); opacity: 0.8; }
+}
+
+.boot-title {
+    font-family: 'Georgia', serif;
+    font-size: 64px;
+    color: #ff1a1a;
+    text-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.boot-subtitle {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: #4a4a4a;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+#bootButton {
+    background: transparent;
+    border: 1px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 16px 40px;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    margin: 0 auto;
+}
+
+#bootButton:hover {
+    background: #ff1a1a;
+    color: #000;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+#bootButton:active {
+    transform: scale(0.95);
+}
+
+.boot-btn-icon {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.boot-version {
+    font-family: Consolas, monospace;
+    font-size: 11px;
+    color: #3a1a1a;
+    margin-top: 30px;
+    letter-spacing: 2px;
+}
+
+#bootButton.loading {
+    border-color: #ff1a1a;
+    color: #ff1a1a;
+    animation: bootLoading 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes bootLoading {
+    0% { opacity: 0.5; transform: scale(0.98); }
+    100% { opacity: 1; transform: scale(1.02); }
+}
+
+/* ========== MODAL DO EDEN ========== */
+#edenModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: edenFadeIn 1s ease-out;
+}
+
+#edenModal.active {
+    display: flex;
+}
+
+@keyframes edenFadeIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.eden-container {
+    text-align: center;
+    padding: 50px;
+    max-width: 700px;
+    width: 90%;
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    background: rgba(10, 0, 0, 0.8);
+    box-shadow: 0 0 80px rgba(255, 0, 0, 0.05);
+}
+
+.eden-icon {
+    font-size: 60px;
+    color: #ff1a1a;
+    margin-bottom: 15px;
+    display: block;
+    font-family: Georgia, serif;
+    animation: bootIconFloat 3s ease-in-out infinite;
+}
+
+.eden-title {
+    font-family: 'Georgia', serif;
+    font-size: 48px;
+    color: #ff1a1a;
+    text-shadow: 0 0 40px rgba(255, 0, 0, 0.15);
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.eden-verse {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    color: #f88;
+    font-style: italic;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+.eden-reference {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: #6a4a4a;
+    margin-bottom: 30px;
+}
+
+.eden-welcome {
+    font-family: 'Georgia', serif;
+    font-size: 20px;
+    color: #8a6a6a;
+    margin-bottom: 35px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+.eden-button {
+    background: transparent;
+    border: 1px solid #ff1a1a;
+    color: #ff1a1a;
+    padding: 14px 40px;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    width: auto;
+    margin: 0 auto;
+}
+
+.eden-button:hover {
+    background: #ff1a1a;
+    color: #000;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* ========== TERMINAL ========== */
+.terminal {
+    border-color: red !important;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2) !important;
+}
+
+.terminal.boot-opening {
+    animation: terminalOpen 1s ease-out forwards;
+}
+
+@keyframes terminalOpen {
+    0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0;
+        border-color: rgba(255, 0, 0, 0.1);
+    }
+    30% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0.3;
+        border-color: rgba(255, 0, 0, 0.3);
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(0.7);
+        opacity: 0.7;
+        border-color: rgba(255, 0, 0, 0.6);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        border-color: red;
+    }
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 600px) {
+    .boot-title {
+        font-size: 40px;
+        letter-spacing: 4px;
+    }
+    .boot-icon {
+        font-size: 50px;
+    }
+    .boot-subtitle {
+        font-size: 14px;
+    }
+    .eden-title {
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+    .eden-verse {
+        font-size: 17px;
+    }
+    .eden-welcome {
+        font-size: 16px;
+    }
+    #bootButton {
+        padding: 14px 30px;
+        font-size: 12px;
+    }
+    .eden-button {
+        padding: 12px 30px;
+        font-size: 12px;
+    }
+}
+
+/* ========== ANIMAÇÕES PARA ZOMBOID ========== */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    10% { transform: translate(-2px, 2px); }
+    20% { transform: translate(2px, -2px); }
+    30% { transform: translate(-1px, 1px); }
+    40% { transform: translate(1px, -1px); }
+    50% { transform: translate(-3px, 0px); }
+    60% { transform: translate(3px, 0px); }
+    70% { transform: translate(-1px, 2px); }
+    80% { transform: translate(1px, -2px); }
+    90% { transform: translate(-2px, 0px); }
+    100% { transform: translate(0); }
+}
+
+/* Janelas do Zomboid */
+.zomboid-window {
+    animation: glitch 0.05s infinite;
+    border: 1px solid #ff4444;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+}
+
+.zomboid-popup {
+    animation: glitch 0.15s infinite;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+/* ========== BOTÃO DE ACESSIBILIDADE ========== */
+#accessibilityBtn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    border-radius: 50%;
+    color: #ff1a1a;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0.25;
+    user-select: none;
+}
+
+#accessibilityBtn:hover {
+    opacity: 0.7;
+    background: rgba(255, 0, 0, 0.08);
+    border-color: rgba(255, 0, 0, 0.2);
+}
+
+#accessibilityBtn.safe-mode {
+    opacity: 0.6;
+    background: rgba(0, 255, 0, 0.08);
+    border-color: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+}
+
+/* ================================================================ */
+/* ========== GLITCH NA PÁGINA INTEIRA ========== */
+/* ================================================================ */
+
+/* Animação base do glitch no body */
+.glitch-active {
+    animation: bodyGlitch 0.08s infinite;
+}
+
+@keyframes bodyGlitch {
+    0% { transform: translate(0); }
+    10% { transform: translate(-1px, 1px); }
+    20% { transform: translate(1px, -1px); }
+    30% { transform: translate(-1px, -1px); }
+    40% { transform: translate(1px, 1px); }
+    50% { transform: translate(-2px, 0px); }
+    60% { transform: translate(2px, 0px); }
+    70% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    90% { transform: translate(-1px, 0px); }
+    100% { transform: translate(0); }
+}
+
+/* Glitch do terminal */
+@keyframes glitch {
+    0% { transform: translate(-50%, -50%); }
+    10% { transform: translate(calc(-50% - 2px), calc(-50% + 2px)); }
+    20% { transform: translate(calc(-50% + 2px), calc(-50% - 2px)); }
+    30% { transform: translate(calc(-50% - 1px), calc(-50% + 1px)); }
+    40% { transform: translate(calc(-50% + 1px), calc(-50% - 1px)); }
+    50% { transform: translate(calc(-50% - 3px), calc(-50% + 0px)); }
+    60% { transform: translate(calc(-50% + 3px), calc(-50% + 0px)); }
+    70% { transform: translate(calc(-50% - 1px), calc(-50% + 2px)); }
+    80% { transform: translate(calc(-50% + 1px), calc(-50% - 2px)); }
+    90% { transform: translate(calc(-50% - 2px), calc(-50% + 0px)); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+/* Shake do terminal (nível 3) */
+@keyframes terminalShake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(calc(-50% + 3px), calc(-50% - 2px)) rotate(1deg); }
+    50% { transform: translate(calc(-50% - 3px), calc(-50% + 2px)) rotate(-1deg); }
+    75% { transform: translate(calc(-50% + 2px), calc(-50% + 1px)) rotate(0.5deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* Ruído no fundo */
+@keyframes noise {
+    0% { transform: translate(0, 0); opacity: 0.2; }
+    10% { transform: translate(-2px, 1px); opacity: 0.25; }
+    20% { transform: translate(2px, -1px); opacity: 0.2; }
+    30% { transform: translate(-1px, -2px); opacity: 0.3; }
+    40% { transform: translate(1px, 2px); opacity: 0.2; }
+    50% { transform: translate(-2px, 2px); opacity: 0.25; }
+    60% { transform: translate(2px, -2px); opacity: 0.2; }
+    70% { transform: translate(-1px, 1px); opacity: 0.3; }
+    80% { transform: translate(1px, -1px); opacity: 0.2; }
+    90% { transform: translate(-2px, -1px); opacity: 0.25; }
+    100% { transform: translate(0, 0); opacity: 0.2; }
+}
+
+/* Scanline (linhas horizontais) */
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+/* Linha horizontal passando */
+@keyframes horizontalLine {
+    0% { top: 0; opacity: 0.3; }
+    20% { top: 20%; opacity: 0.5; }
+    40% { top: 40%; opacity: 0.2; }
+    60% { top: 60%; opacity: 0.6; }
+    80% { top: 80%; opacity: 0.3; }
+    100% { top: 0; opacity: 0.3; }
+}
+
+/* Distorção cromática no texto */
+@keyframes textGlitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(1px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(1px, 1px); }
+    100% { transform: translate(0); }
+}
+
+/* Mensagem de glitch aparecendo */
+/* ========== MENSAGENS EM SPAM ========== */
+@keyframes mensagemSpam {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(-1deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.95) rotate(1deg);
+    }
+    80% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(0.9) rotate(-2deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotate(5deg);
+    }
+}
+
+.mensagem-glitch {
+    animation: mensagemSpam 1.5s ease-out forwards;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Flicker do body */
+@keyframes bodyFlicker {
+    0%, 100% { opacity: 1; }
+    97% { opacity: 1; }
+    98% { opacity: 0.8; }
+    99% { opacity: 1; }
+}
+
+/* ========== CLASSES DE NÍVEL ========== */
+.glitch-nivel-1 .terminal {
+    animation-duration: 0.08s !important;
+}
+
+.glitch-nivel-2 .terminal {
+    animation-duration: 0.05s !important;
+    border-color: #ff4444 !important;
+}
+
+.glitch-nivel-3 .terminal {
+    animation-duration: 0.02s !important;
+    border-color: #ff0000 !important;
+}
+
+/* Fundo piscando vermelho no nível 3 */
+.glitch-nivel-3 #background {
+    animation: fundoGlitch 0.3s infinite;
+}
+
+@keyframes fundoGlitch {
+    0%, 100% { color: #330000; }
+    5% { color: #ff0000; font-size: 40px; }
+    10% { color: #330000; font-size: 12px; }
+    15% { color: #ff0000; font-size: 35px; }
+    20% { color: #330000; font-size: 12px; }
+}
+
+/* ========== EFEITOS VISUAIS DO GLITCH ========== */
+
+/* Overlay de glitch */
+#glitchOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 0, 0, 0.03) 0px,
+        rgba(255, 0, 0, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    animation: scanline 0.1s linear infinite;
+}
+
+/* Efeito de "estática" nos cantos */
+.glitch-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255,0,0,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255,0,0,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(255,0,0,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255,0,0,0.03) 0%, transparent 50%);
+    animation: glitch 0.15s infinite;
+}
+
+/* Linha horizontal passando */
+.glitch-active::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 0, 0, 0.2);
+    z-index: 9999;
+    pointer-events: none;
+    animation: horizontalLine 0.3s linear infinite;
+}
+
+/* Distorção cromática no texto durante glitch */
+.glitch-nivel-2 #screen pre,
+.glitch-nivel-3 #screen pre {
+    text-shadow: 
+        2px 0 rgba(255, 0, 0, 0.3),
+        -2px 0 rgba(0, 255, 0, 0.3),
+        0 2px rgba(0, 0, 255, 0.2);
+    animation: textGlitch 0.05s infinite;
+}
+
+/* Efeito de "sujeira" na tela durante glitch forte */
+.glitch-nivel-3 #screen {
+    filter: contrast(1.3) brightness(1.1) blur(0.5px);
+}
+
+/* Flicker do body */
+.glitch-active {
+    animation: bodyFlicker 2s infinite;
+}
+
+/* Efeito de "pixels" aleatórios no terminal */
+.glitch-active .terminal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,0,0,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 30% 60%, rgba(255,0,0,0.08) 1px, transparent 1px),
+        radial-gradient(circle at 50% 10%, rgba(255,0,0,0.12) 1px, transparent 1px),
+        radial-gradient(circle at 70% 80%, rgba(255,0,0,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 90% 40%, rgba(255,0,0,0.1) 1px, transparent 1px);
+    background-size: 200px 200px;
+    animation: glitch 0.1s infinite;
+}
+
+/* Efeito de ruído no fundo durante glitch */
+.glitch-active #background {
+    animation: noise 0.05s infinite;
+}
+
+/* Efeito de flicker na tela durante glitch */
+.glitch-active .terminal {
+    animation: glitch 0.08s infinite;
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.3), inset 0 0 50px rgba(255, 0, 0, 0.1) !important;
+}
+
+/* ========== ANIMAÇÃO DE NEGAÇÃO ========== */
+@keyframes deniedPulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.denied-text {
+    animation: deniedPulse 0.5s ease-in-out 3;
+    color: #ff4444 !important;
+    font-weight: bold;
+}
+
+/* Efeito de "distorção" no botão NÃO bloqueado */
+.btn-nao-bloqueado {
+    animation: deniedPulse 0.5s ease-in-out 1;
+}
