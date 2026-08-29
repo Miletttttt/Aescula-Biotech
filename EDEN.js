@@ -108,10 +108,10 @@ function mostrarEdenMenu() {
                             [ SOBRE ]
                         </button>
                         <button id="btnResearch" onclick="mostrarResearch()" style="flex:1; min-width: 100px; padding: 10px; background: transparent; color: #666; border: 1px solid #333; cursor: not-allowed; font-family: Consolas, monospace; font-size: 12px; transition: all 0.3s; opacity: 0.5;">
-                            [ PESQUISA ]
+                            [PESQUISA]
                         </button>
                         <button onclick="mostrarVolunteer()" style="flex:1; min-width: 100px; padding: 10px; background: transparent; color: #ff1a1a; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 12px; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff1a1a'; this.style.color='#ff4444';" onmouseout="this.style.borderColor='#333'; this.style.color='#ff1a1a';">
-                            [ VOLUNTÁRIO ]
+                            [VOLUNTÁRIO]  
                         </button>
                         <button onclick="mostrarContact()" style="flex:1; min-width: 100px; padding: 10px; background: transparent; color: #ff1a1a; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 12px; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff1a1a'; this.style.color='#ff4444';" onmouseout="this.style.borderColor='#333'; this.style.color='#ff1a1a';">
                             [ CONTATO ]
@@ -204,7 +204,7 @@ function mostrarResearchOmega() {
     playNavSound();
     atualizarConteudoEden(`
         <div style="padding: 15px; border: 1px solid #ff1a1a; background: rgba(255,0,0,0.05);">
-            <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">⚡ ACESSO OMEGA — PESQUISA AVANÇADA</div>
+            <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">ACESSO OMEGA — PESQUISA AVANÇADA</div>
             <div style="color: #888; font-size: 13px; line-height: 1.8;">
                 • <span style="color: #ff1a1a;">Projeto Lazarus</span> — Estudos de adaptação genética avançada<br>
                 • <span style="color: #ff1a1a;">Projeto A.D.A.M.</span> — Sistemas biológicos sintéticos<br>

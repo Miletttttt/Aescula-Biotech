@@ -252,289 +252,6 @@ function mostrarFormulario() {
     }
 }
 
-// ========== ZOMBOID ==========
-async function sequenciaZomboid() {
-async function sequenciaZomboid() {
-    // TRAVA A TELA POR 3 SEGUNDOS
-    screen.innerHTML = `
-        <div style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            min-height: 300px;
-            font-family: Consolas, monospace;
-            color: #ff1a1a;
-            font-size: 24px;
-            animation: blink 1s infinite;
-        ">
-            CARREGANDO...
-        </div>
-    `;
-    
-    await esperar(3000);
-    
-    // LIMPA E MOSTRA A MENSAGEM INICIAL
-    screen.innerHTML = "";
-    await escrever("");
-    await escrever("════════════════════════════════════════");
-    await escrever("   AESCULA BIOTECH INDUSTRIES");
-    await escrever("");
-    await escrever("   Usuario reconhecido.");
-    await escrever("");
-    await escrever("   Bem-vindo de volta, Dr. ████████.");
-    await escrever("════════════════════════════════════════");
-    
-    await esperar(5000);
-    
-    // LIMPA E MOSTRA A PRÓXIMA MENSAGEM
-    screen.innerHTML = "";
-    await escrever(""), 50
-    await escrever(`   Voce realmente ainda utiliza o nome "Zomboid"?`);
-    await escrever("");
-    await escrever("   Confesso que nunca entendi sua insistencia");
-    await escrever("   nesse apelido.");
-    await escrever("");
-    await escrever("   Ainda assim...");
-    await escrever("");
-    await escrever("   E bom ve-lo novamente, meu amigo.");
-    
-    await esperar(3000);
-    
-    // MENSAGENS RÁPIDAS (UMA POR VEZ)
-    const mensagens = [
-        "Faz 4 anos.",
-        "4 anos desde sua demissao.",
-        "4 anos desde que voce abandonou o Projeto Lazarus.",
-        "Voce se lembra da ultima conversa que tivemos?"
-    ];
-    
-    for (let msg of mensagens) {
-        screen.innerHTML = "";
-        await escrever(""), 50;
-        await escrever(`   ${msg}`);
-        await esperar(1800);
-    }
-    
-    // SEQUÊNCIA COM PISCADAS
-    screen.innerHTML = "";
-    await escrever(""), 50;
-    await escrever(`   "Isso esta indo longe demais."`);
-    await escrever("");
-    await escrever("   Foi isso que voce disse.");
-    await esperar(2000);
-    
-    screen.innerHTML = "";
-    await escrever(""), 50;
-    await escrever("   Eu esperava mais de voce.");
-    await esperar(1500);
-    
-    screen.innerHTML = "";
-    await escrever(""), 50;
-    await escrever("   Voce viu os resultados.");
-    await esperar(1500);
-    
-    screen.innerHTML = "";
-    await escrever(""), 50;
-    await escrever("   Voce viu o potencial.");
-    await esperar(1500);
-    
-    screen.innerHTML = "";
-    await escrever(""), 50;
-    await escrever("   Voce foi um dos poucos que realmente");
-    await escrever("   compreendeu o que estavamos construindo.");
-    await esperar(2000);
-    
-    // POPUPS (MENSAGENS CENTRALIZADAS) - TODOS AO MESMO TEMPO
-    const popups = [
-        "Por que voce foi embora?",
-        "Por que voce me deixou sozinho?",
-        "Voce tinha medo?",
-        "Ou apenas faltou coragem?"
-    ];
-    
-    const posicoes = [
-        { top: 15, left: 10 },
-        { top: 30, left: 65 },
-        { top: 55, left: 20 },
-        { top: 70, left: 70 }
-    ];
-    
-    popups.forEach((texto, index) => {
-        const pos = posicoes[index % posicoes.length];
-        const msgDiv = document.createElement('div');
-        msgDiv.style.cssText = `
-            position: fixed;
-            top: ${pos.top}%;
-            left: ${pos.left}%;
-            transform: translate(-50%, -50%) rotate(${Math.random() * 6 - 3}deg);
-            color: #ff4444;
-            font-size: ${20 + Math.random() * 10}px;
-            font-family: Consolas, monospace;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.92);
-            padding: 20px 30px;
-            border: 2px solid #ff4444;
-            z-index: 9999;
-            animation: glitch 0.15s infinite;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-        `;
-        msgDiv.textContent = texto;
-        document.body.appendChild(msgDiv);
-        
-        setTimeout(() => {
-            if (msgDiv.parentNode) msgDiv.remove();
-        }, 4000);
-    });
-    
-    // JANELAS SOBRE JANELAS (TEXTO SPAM)
-    const textosSpam = [
-        "Eu perdoaria sua covardia.",
-        "Mas nao seu abandono.",
-        "Voce nos chamou de desumanos.",
-        "Voce chamou A.D.A.M. de desumano.",
-        "Voce chamou E.V.A. de desumana.",
-        "Voce chamou Lazarus de desumano.",
-        "Mas olhe ao seu redor.",
-        "Quem estava certo?"
-    ];
-    
-    const janelas = [];
-    textosSpam.forEach((texto, index) => {
-        setTimeout(() => {
-            const janela = document.createElement('div');
-            const top = 5 + Math.random() * 85;
-            const left = 5 + Math.random() * 85;
-            const width = 200 + Math.random() * 300;
-            const rotacao = Math.random() * 10 - 5;
-            
-            janela.style.cssText = `
-                position: fixed;
-                top: ${top}%;
-                left: ${left}%;
-                transform: translate(-50%, -50%) rotate(${rotacao}deg);
-                color: #ff4444;
-                font-size: ${14 + Math.random() * 8}px;
-                font-family: Consolas, monospace;
-                background: rgba(0, 0, 0, 0.9);
-                padding: 15px 25px;
-                border: 1px solid #ff4444;
-                z-index: 9998;
-                box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
-                max-width: ${width}px;
-                text-align: center;
-                animation: glitch ${0.05 + Math.random() * 0.05}s infinite;
-                opacity: 0.9;
-            `;
-            janela.textContent = texto;
-            document.body.appendChild(janela);
-            janelas.push(janela);
-        }, index * 300);
-    });
-    
-    await esperar(4000);
-    
-    // TEXTO DESCONTROLADO (SPAM CENTRALIZADO)
-    const spamTextos = [
-        "VOCE FOI EMBORA.",
-        "VOCE ME DEIXOU.",
-        "VOCE ABANDONOU O FUTURO.",
-        "VOCE ABANDONOU A HUMANIDADE."
-    ];
-    
-    for (let i = 0; i < 30; i++) {
-        setTimeout(() => {
-            const spamDiv = document.createElement('div');
-            const texto = spamTextos[Math.floor(Math.random() * spamTextos.length)];
-            const top = Math.random() * 90 + 5;
-            const left = Math.random() * 90 + 5;
-            const tamanho = 16 + Math.random() * 24;
-            
-            spamDiv.style.cssText = `
-                position: fixed;
-                top: ${top}%;
-                left: ${left}%;
-                transform: translate(-50%, -50%) rotate(${Math.random() * 8 - 4}deg);
-                color: #ff0000;
-                font-size: ${tamanho}px;
-                font-family: Consolas, monospace;
-                font-weight: bold;
-                z-index: 9997;
-                opacity: ${0.4 + Math.random() * 0.5};
-                text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-                pointer-events: none;
-                animation: glitch ${0.02 + Math.random() * 0.04}s infinite;
-            `;
-            spamDiv.textContent = texto;
-            document.body.appendChild(spamDiv);
-            
-            setTimeout(() => {
-                if (spamDiv.parentNode) spamDiv.remove();
-            }, 5000);
-        }, i * 150);
-    }
-    
-    await esperar(5000);
-    
-    // LIMPA TODAS AS JANELAS
-    janelas.forEach(janela => {
-        if (janela.parentNode) janela.remove();
-    });
-    document.querySelectorAll('div[style*="z-index: 9997"]').forEach(el => el.remove());
-    
-    // ÚLTIMA JANELA - CALMA E PEQUENA
-    screen.innerHTML = "";
-    await escrever(""), 50;
-    await escrever("   Apesar de tudo...");
-    await escrever("");
-    await escrever("   Ainda sinto sua falta, meu amigo.");
-    await escrever("");
-    await escrever("   — Matthias");
-    await escrever("");
-    await esperar(3000);
-    
-    // FECHA TUDO
-    screen.innerHTML = `
-        <div style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            min-height: 300px;
-            font-family: Consolas, monospace;
-            color: #ff1a1a;
-            font-size: 20px;
-            animation: blink 0.5s infinite;
-        ">
-            [ SISTEMA ENCERRADO ]
-        </div>
-    `;
-    
-    await esperar(2000);
-    
-    // TRAVA O NAVEGADOR (SIMULA)
-    document.body.style.backgroundColor = '#000';
-    document.body.innerHTML = `
-        <div style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Consolas, monospace;
-            color: #ff1a1a;
-            font-size: 16px;
-            background: #000;
-        ">
-            <div style="text-align: center;">
-                <div style="font-size: 24px; margin-bottom: 20px; animation: blink 1s infinite;">■</div>
-                <div style="color: #666;">O sistema encontrou um erro crítico.</div>
-                <div style="color: #444; font-size: 12px; margin-top: 10px;">[ MEMORIA CORROMPIDA ]</div>
-            </div>
-        </div>
-    `;
-}
-
 // ========== IDENTIFICACAO ==========
 async function identificar() {
     // Impede múltiplos cliques
@@ -1082,8 +799,8 @@ function responderNao(isBloqueado) {
 }
 
 // ========== PROXIMA PERGUNTA (TEXT) ==========
+// ========== PROXIMA PERGUNTA (TEXT) ==========
 function proximaPergunta() {
-    // Impede múltiplos cliques
     const btn = document.querySelector('button[onclick="proximaPergunta()"]');
     if (btn && btn.dataset.clicado === 'true') {
         return;
@@ -1155,6 +872,7 @@ function proximaPergunta() {
                 btn.style.opacity = '1';
                 btn.style.cursor = 'pointer';
             }
+            input.focus();
         }, 2000);
         
         return;
@@ -1342,15 +1060,52 @@ async function mostrarPergunta() {
 
     const isBloqueada = isPerguntaBloqueada(p);
 
-    if (p.type === "text") {
+        if (p.type === "text") {
         screen.innerHTML += `
-            <input id="answer" placeholder="Digite sua resposta..." style="width:100%;margin-top:20px;padding:12px;background:black;border:1px solid red;color:red;font-family:Consolas,monospace;font-size:18px;">
-            <button onclick="proximaPergunta()" style="width:100%;margin-top:15px;padding:12px;background:black;color:red;border:1px solid red;cursor:pointer;font-family:Consolas,monospace;font-size:16px;">[ ENVIAR ]</button>
+            <div style="position:relative; width:100%; margin-top:20px;">
+                <textarea id="answer" 
+                    placeholder="Digite sua resposta..." 
+                    rows="1"
+                    style="
+                        width:100%;
+                        padding:12px;
+                        background:black;
+                        border:1px solid red;
+                        color:red;
+                        font-size:18px;
+                        font-family:Consolas,monospace;
+                        resize:none;
+                        overflow:hidden;
+                        min-height:50px;
+                        max-height:300px;
+                        box-sizing:border-box;
+                        transition: all 0.1s ease;
+                    "
+                ></textarea>
+                <button onclick="proximaPergunta()" style="
+                    width:100%;
+                    margin-top:15px;
+                    padding:12px;
+                    background:black;
+                    color:red;
+                    border:1px solid red;
+                    cursor:pointer;
+                    font-family:Consolas,monospace;
+                    font-size:16px;
+                    transition: all 0.3s;
+                " onmouseover="this.style.background='#ff1a1a';this.style.color='#000';" onmouseout="this.style.background='black';this.style.color='red';">[ ENVIAR ]</button>
+            </div>
         `;
         
         const input = document.getElementById("answer");
         if (input) {
+            // Auto-expandir enquanto digita
             input.addEventListener('input', function() {
+                // Reseta a altura para calcular o scrollHeight correto
+                this.style.height = 'auto';
+                // Define a altura baseada no conteúdo
+                this.style.height = Math.min(this.scrollHeight, 300) + 'px';
+                
                 isUserTyping = true;
                 playTypeSound_User();
                 clearTimeout(window.userTypingTimeout);
@@ -1358,12 +1113,14 @@ async function mostrarPergunta() {
                     isUserTyping = false;
                 }, 100);
             });
+            
             input.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
+                if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     proximaPergunta();
                 }
             });
+            
             setTimeout(() => {
                 input.focus();
             }, 100);
@@ -1503,15 +1260,52 @@ async function mostrarPerguntaVisitante() {
 
     const isBloqueada = isPerguntaBloqueada(p);
 
-    if (p.type === "text") {
+        if (p.type === "text") {
         screen.innerHTML += `
-            <input id="answer" placeholder="Digite sua resposta..." style="width:100%;margin-top:20px;padding:12px;background:black;border:1px solid red;color:red;font-family:Consolas,monospace;font-size:18px;">
-            <button onclick="proximaPerguntaVisitante()" style="width:100%;margin-top:15px;padding:12px;background:black;color:red;border:1px solid red;cursor:pointer;font-family:Consolas,monospace;font-size:16px;">[ ENVIAR ]</button>
+            <div style="position:relative; width:100%; margin-top:20px;">
+                <textarea id="answer" 
+                    placeholder="Digite sua resposta..." 
+                    rows="1"
+                    style="
+                        width:100%;
+                        padding:12px;
+                        background:black;
+                        border:1px solid red;
+                        color:red;
+                        font-size:18px;
+                        font-family:Consolas,monospace;
+                        resize:none;
+                        overflow:hidden;
+                        min-height:50px;
+                        max-height:300px;
+                        box-sizing:border-box;
+                        transition: all 0.1s ease;
+                    "
+                ></textarea>
+                <button onclick="proximaPergunta()" style="
+                    width:100%;
+                    margin-top:15px;
+                    padding:12px;
+                    background:black;
+                    color:red;
+                    border:1px solid red;
+                    cursor:pointer;
+                    font-family:Consolas,monospace;
+                    font-size:16px;
+                    transition: all 0.3s;
+                " onmouseover="this.style.background='#ff1a1a';this.style.color='#000';" onmouseout="this.style.background='black';this.style.color='red';">[ ENVIAR ]</button>
+            </div>
         `;
         
         const input = document.getElementById("answer");
         if (input) {
+            // Auto-expandir enquanto digita
             input.addEventListener('input', function() {
+                // Reseta a altura para calcular o scrollHeight correto
+                this.style.height = 'auto';
+                // Define a altura baseada no conteúdo
+                this.style.height = Math.min(this.scrollHeight, 300) + 'px';
+                
                 isUserTyping = true;
                 playTypeSound_User();
                 clearTimeout(window.userTypingTimeout);
@@ -1519,12 +1313,14 @@ async function mostrarPerguntaVisitante() {
                     isUserTyping = false;
                 }, 100);
             });
+            
             input.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
+                if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
-                    proximaPerguntaVisitante();
+                    proximaPergunta();
                 }
             });
+            
             setTimeout(() => {
                 input.focus();
             }, 100);
@@ -1663,20 +1459,42 @@ function responderNaoVisitante(isBloqueado) {
     telaLoadingVisitante();
 }
 
-function proximaPerguntaVisitante() {
+// ========== PROXIMA PERGUNTA (TEXT) ==========
+function proximaPergunta() {
+    const btn = document.querySelector('button[onclick="proximaPergunta()"]');
+    if (btn && btn.dataset.clicado === 'true') {
+        return;
+    }
+    if (btn) {
+        btn.dataset.clicado = 'true';
+        btn.style.opacity = '0.5';
+        btn.style.cursor = 'default';
+    }
+    
     const input = document.getElementById("answer");
     if (!input) {
-        const perguntas = window.perguntasVisitante || [];
-        if (perguntaAtual < perguntas.length) {
-            perguntaAtual++;
-            mostrarPerguntaVisitante();
-        } else {
-            fim();
+        console.error("Input não encontrado!");
+        const p = getPerguntaAtual();
+        if (p) {
+            respostas.push({
+                question: p.question,
+                answer: "[SEM RESPOSTA]",
+                category: p.category || "Geral"
+            });
+            perguntasRespondidasNaCategoria++;
+        }
+        perguntaAtual++;
+        telaLoading();
+        if (btn) {
+            btn.dataset.clicado = 'false';
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
         }
         return;
     }
     
     const resposta = input.value.trim();
+
     if (!resposta) {
         playEmptyFieldSound();
         
@@ -1702,20 +1520,27 @@ function proximaPerguntaVisitante() {
         
         input.style.borderColor = '#ff4444';
         input.style.boxShadow = '0 0 20px rgba(255, 0, 0, 0.5)';
-        input.placeholder = '⚠️ DIGITE ALGO...';
+        input.placeholder = 'DIGITE ALGO...';
         
         setTimeout(() => {
             if (msgDiv.parentNode) msgDiv.remove();
             input.style.borderColor = 'red';
             input.style.boxShadow = 'none';
             input.placeholder = 'Digite sua resposta...';
+            if (btn) {
+                btn.dataset.clicado = 'false';
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+            }
+            input.focus();
         }, 2000);
+        
         return;
     }
 
     playSubmitSound();
-    const perguntas = window.perguntasVisitante || [];
-    const p = perguntas[perguntaAtual];
+
+    const p = getPerguntaAtual();
     if (p) {
         respostas.push({
             question: p.question,
@@ -1725,7 +1550,13 @@ function proximaPerguntaVisitante() {
         perguntasRespondidasNaCategoria++;
     }
     perguntaAtual++;
-    telaLoadingVisitante();
+    telaLoading();
+    
+    if (btn) {
+        btn.dataset.clicado = 'false';
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+    }
 }
 
 async function telaLoadingVisitante() {
@@ -1796,7 +1627,6 @@ async function enviarParaFormspree() {
         return false;
     }
     
-    // Pega os dados do questionário
     const dados = {
         sujeito: usuarioAtual?.nome || 'Desconhecido',
         numero: usuarioAtual?.numero || 'N/A',
@@ -1902,5 +1732,4 @@ async function fim() {
             </div>
         </div>
     `;
-}
 }

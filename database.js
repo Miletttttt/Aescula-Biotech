@@ -10,7 +10,7 @@ const subjects = {
         // ID de verificação (senha do sujeito)
         codigo: "P0320"
     },
-    "glauber ferreira amado": {
+    "Glauber Ferreira Amado": {
         id: "032",
         numero: "032",
         estado: "HOST",
@@ -20,14 +20,14 @@ const subjects = {
         titulo: "ATLAS",
         codigo: "P0320"
     },
-    "marcus oliver": {
+    "Marcus Oliver": {
         id: "045",
         numero: "045",
         estado: "HOST",
         relacao: "VECTOR",
         codigo: "P0455"
     },
-    "jason maclam": {
+    "Jason Maclam": {
         id: "078",
         numero: "078",
         estado: "FREE",
@@ -35,7 +35,7 @@ const subjects = {
         idade: "30",
         codigo: "P0788"
     },
-    "julius topuria": {
+    "Julius Topuria": {
         id: "089",
         numero: "089",
         estado: "FREE",
@@ -44,12 +44,22 @@ const subjects = {
         codigo: "P0890"
     },
 
-    "sasha arantes hanabi": {
+    "Sasha Arantes Hanabi": {
         id: "073",
         numero: "073",
         estado: "FREE",
         relacao: "NONE",
-        idade: ""
+        idade: "21",
+        codigo: "P0730"
+    },
+
+    "Yamato Hanabi": {
+        id: "074",
+        numero: "074",
+        estado: "HOST",
+        relacao: "VECTOR",
+        idade: "17",
+        codigo: "P0740"
     },
 
     "zomboid": {
@@ -59,7 +69,6 @@ const subjects = {
         relacao: "PESQUISADOR",
         idade: "40",
         nascimento: "13/05/1990",
-        codigo: "P0890"
     },
 
     "matthias": {

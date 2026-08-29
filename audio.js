@@ -92,6 +92,184 @@ function playTypeSound() {
     }
 }
 
+// ========== SOM DE ESTÁTICA CONTÍNUA ==========
+let staticSound = null;
+let staticGain = null;
+let staticNoise = null;
+let staticFilter = null;
+
+function playStaticSound() {
+    try {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        
+        // Cria ruído branco contínuo
+        const bufferSize = audioCtx.sampleRate * 0.1;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            data[i] = (Math.random() * 2 - 1);
+        }
+        
+        staticNoise = audioCtx.createBufferSource();
+        staticNoise.buffer = buffer;
+        staticNoise.loop = true;
+        
+        staticFilter = audioCtx.createBiquadFilter();
+        staticFilter.type = 'bandpass';
+        staticFilter.frequency.value = 800;
+        staticFilter.Q.value = 1.5;
+        
+        staticGain = audioCtx.createGain();
+        staticGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        staticGain.gain.linearRampToValueAtTime(0.02, audioCtx.currentTime + 0.5);
+        
+        staticNoise.connect(staticFilter);
+        staticFilter.connect(staticGain);
+        staticGain.connect(audioCtx.destination);
+        
+        staticNoise.start(audioCtx.currentTime);
+        
+        // Efeito de "varredura" na estática (muda a frequência lentamente)
+        let freq = 800;
+        const freqInterval = setInterval(() => {
+            if (staticNoise) {
+                freq = 400 + Math.random() * 800;
+                if (staticFilter) {
+                    staticFilter.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                }
+            }
+        }, 500);
+        
+        // Guarda o intervalo para limpar depois
+        if (staticSound) {
+            clearInterval(staticSound);
+        }
+        staticSound = freqInterval;
+        
+    } catch(e) {
+        console.log('Static sound error:', e);
+    }
+}
+
+function stopStaticSound() {
+    try {
+        if (staticNoise) {
+            if (staticGain) {
+                staticGain.gain.setValueAtTime(staticGain.gain.value, audioCtx.currentTime);
+                staticGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+                setTimeout(() => {
+                    try {
+                        if (staticNoise) {
+                            staticNoise.stop();
+                            staticNoise = null;
+                        }
+                        if (staticGain) {
+                            staticGain.disconnect();
+                            staticGain = null;
+                        }
+                        if (staticFilter) {
+                            staticFilter.disconnect();
+                            staticFilter = null;
+                        }
+                        if (staticSound) {
+                            clearInterval(staticSound);
+                            staticSound = null;
+                        }
+                    } catch(e) {}
+                }, 500);
+            }
+        }
+    } catch(e) {
+        console.log('Stop static error:', e);
+    }
+}
+
+// ========== SOM DE SPAM (TEXTO DESCONTROLADO - ZOMBOID) ==========
+function playZomboidSpamSound() {
+    try {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        
+        // Som mais agressivo que o panic sound, com distorção
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const osc2 = audioCtx.createOscillator();
+        const gain2 = audioCtx.createGain();
+        const osc3 = audioCtx.createOscillator();
+        const gain3 = audioCtx.createGain();
+        
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc2.connect(gain2);
+        gain2.connect(audioCtx.destination);
+        osc3.connect(gain3);
+        gain3.connect(audioCtx.destination);
+        
+        // Primeiro som - agudo e cortante (como um alarme)
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(1000 + Math.random() * 400, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(300 + Math.random() * 200, audioCtx.currentTime + 0.1);
+        
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+        
+        // Segundo som - grave e pulsante
+        osc2.type = 'sawtooth';
+        osc2.frequency.setValueAtTime(200, audioCtx.currentTime);
+        osc2.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.2);
+        
+        gain2.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain2.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 0.03);
+        gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+        
+        // Terceiro som - ruído de estática (mais curto)
+        osc3.type = 'sawtooth';
+        osc3.frequency.setValueAtTime(3000 + Math.random() * 2000, audioCtx.currentTime);
+        osc3.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.05);
+        
+        gain3.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain3.gain.linearRampToValueAtTime(0.03, audioCtx.currentTime + 0.01);
+        gain3.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
+        
+        osc.start(audioCtx.currentTime);
+        osc.stop(audioCtx.currentTime + 0.15);
+        osc2.start(audioCtx.currentTime + 0.02);
+        osc2.stop(audioCtx.currentTime + 0.25);
+        osc3.start(audioCtx.currentTime + 0.05);
+        osc3.stop(audioCtx.currentTime + 0.08);
+        
+        // Pequeno "clique" de interferência
+        setTimeout(() => {
+            try {
+                const click = audioCtx.createOscillator();
+                const gainClick = audioCtx.createGain();
+                click.connect(gainClick);
+                gainClick.connect(audioCtx.destination);
+                click.type = 'square';
+                click.frequency.setValueAtTime(1500 + Math.random() * 500, audioCtx.currentTime);
+                gainClick.gain.setValueAtTime(0, audioCtx.currentTime);
+                gainClick.gain.linearRampToValueAtTime(0.02, audioCtx.currentTime + 0.005);
+                gainClick.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+                click.start(audioCtx.currentTime);
+                click.stop(audioCtx.currentTime + 0.04);
+            } catch(e) {}
+        }, 80);
+        
+    } catch(e) {
+        console.log('Zomboid spam sound error:', e);
+    }
+}
+
 // ========== SOM DE PANE (POPUP) ==========
 function playPanicSound() {
     try {
@@ -197,7 +375,7 @@ function playGlitchWindowSound() {
     }
 }
 
-// ========== SOM DE SPAM (TEXTO DESCONTROLADO) ==========
+// ========== SOM DE SPAM (TEXTO DESCONTROLADO - GERAL) ==========
 function playSpamSound() {
     try {
         if (!audioCtx) {
@@ -220,7 +398,7 @@ function playSpamSound() {
         const gain = audioCtx.createGain();
         const filter = audioCtx.createBiquadFilter();
         filter.type = 'bandpass';
-        filter.frequency.value = 1500;
+        filter.frequency.value = 1500 + Math.random() * 500;
         filter.Q.value = 1;
         
         noise.connect(filter);
@@ -228,11 +406,28 @@ function playSpamSound() {
         gain.connect(audioCtx.destination);
         
         gain.gain.setValueAtTime(0, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 0.01);
+        gain.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 0.01);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
         
         noise.start(audioCtx.currentTime);
         noise.stop(audioCtx.currentTime + 0.06);
+        
+        // Pequeno "pip" no final
+        setTimeout(() => {
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain2 = audioCtx.createGain();
+                osc.connect(gain2);
+                gain2.connect(audioCtx.destination);
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(600 + Math.random() * 400, audioCtx.currentTime);
+                gain2.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain2.gain.linearRampToValueAtTime(0.02, audioCtx.currentTime + 0.005);
+                gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + 0.03);
+            } catch(e) {}
+        }, 30);
         
     } catch(e) {
         console.log('Spam sound error:', e);
@@ -451,65 +646,6 @@ function playAnalysisCompleteSound() {
         }, 500);
         
     } catch(e) {}
-}
-
-// ========== SOM DE SPAM (TEXTO DESCONTROLADO) ==========
-function playSpamSound() {
-    try {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-        
-        // Som de "estática" rápida - tipo interferência
-        const bufferSize = audioCtx.sampleRate * 0.05;
-        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-            data[i] = (Math.random() * 2 - 1) * Math.exp(-i / bufferSize * 2);
-        }
-        const noise = audioCtx.createBufferSource();
-        noise.buffer = buffer;
-        
-        const gain = audioCtx.createGain();
-        const filter = audioCtx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.value = 1500 + Math.random() * 500;
-        filter.Q.value = 1;
-        
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(audioCtx.destination);
-        
-        gain.gain.setValueAtTime(0, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 0.01);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
-        
-        noise.start(audioCtx.currentTime);
-        noise.stop(audioCtx.currentTime + 0.06);
-        
-        // Pequeno "pip" no final
-        setTimeout(() => {
-            try {
-                const osc = audioCtx.createOscillator();
-                const gain2 = audioCtx.createGain();
-                osc.connect(gain2);
-                gain2.connect(audioCtx.destination);
-                osc.type = 'square';
-                osc.frequency.setValueAtTime(600 + Math.random() * 400, audioCtx.currentTime);
-                gain2.gain.setValueAtTime(0, audioCtx.currentTime);
-                gain2.gain.linearRampToValueAtTime(0.02, audioCtx.currentTime + 0.005);
-                gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
-                osc.start(audioCtx.currentTime);
-                osc.stop(audioCtx.currentTime + 0.03);
-            } catch(e) {}
-        }, 30);
-        
-    } catch(e) {
-        console.log('Spam sound error:', e);
-    }
 }
 
 // ========== VOZ ROBÓTICA - EDEN ==========

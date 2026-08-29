@@ -167,21 +167,21 @@ const questions = [
         category: "[SOBRE A ORGANIZACAO]",
         question: "Voce autoriza a utilizacao dos seus dados biologicos?",
         type: "yesno",
-        bloqueada: true  // <-- MARCADA COMO BLOQUEADA
+        bloqueada: true
     },
     {
         id: "organizacao_4",
         category: "[SOBRE A ORGANIZACAO]",
         question: "Voce aceita participar de testes clinicos?",
         type: "yesno",
-        bloqueada: true  // <-- MARCADA COMO BLOQUEADA
+        bloqueada: true
     },
     {
         id: "organizacao_5",
         category: "[SOBRE A ORGANIZACAO]",
         question: "Voce concorda em obedecer as diretrizes da instalacao?",
         type: "yesno",
-        bloqueada: true  // <-- MARCADA COMO BLOQUEADA
+        bloqueada: true
     },
     // PERGUNTAS ESTRANHAS
     {
@@ -230,7 +230,7 @@ const questions = [
     {
         id: "quebra_3",
         category: "[QUEBRA-CABECA]",
-        question: "Qual destas palavras parece mais familiar? Lazarus, Helix, Eden, Orpheus",
+        question: "Qual destas palavras parece mais familiar? Laz████████, E████████en, Or████████us, ████████",
         type: "text"
     },
     {
@@ -264,6 +264,7 @@ questions.forEach(q => {
 
 // ========== PERGUNTAS PERSONALIZADAS POR ID ==========
 const perguntasPersonalizadas = {
+    // ID 032 - Glauber
     "032": [
         "Se tivesse apenas uma dose de um medicamento capaz de salvar uma unica vida, quem voce escolheria?",
         "Voce acredita que ainda conseguiria olhar nos olhos da sua mae se ela soubesse tudo?",
@@ -277,6 +278,8 @@ const perguntasPersonalizadas = {
         "Quando alguem o chama de monstro, o que mais incomoda? O insulto... ou a possibilidade de estarem certos?",
         "Naquela arena, quem morreu primeiro: seu oponente... ou o garoto que jurou nunca tirar uma vida?"
     ],
+    
+    // ID 045 - Marcus Oliver
     "045": [
         "Se tivesse a oportunidade de trazer alguem de volta, mas precisasse condenar outra pessoa inocente, voce aceitaria?",
         "Voce realmente sente falta do seu irmao... ou sente falta da pessoa que voce era antes de perde-lo?",
@@ -294,19 +297,80 @@ const perguntasPersonalizadas = {
         "Voce acredita que ainda possui controle absoluto sobre sua propria mente?",
         "Voce sente que, as vezes, seus pensamentos parecem... compartilhados?"
     ],
+    
+    // ID 078 - Jason MacLam
     "078": [
-        "Quando foi a ultima vez que sentiu algo alem de sobrevivencia?",
-        "Se pudesse esquecer tudo o que viu, voce faria isso?",
-        "O que voce quer quando tudo isso acabar?"
+        "O que voce mais gosta de fazer quando tem um dia livre?",
+        "Qual foi a ultima vez que voce realmente se divertiu com alguem?",
+        "O que faz voce confiar em uma pessoa?",
+        "O que Jullius representa na sua vida?",
+        "Qual foi a coisa mais estupida que voce ja fez por alguem que ama?",
+        "Voce se considera uma pessoa feliz hoje? Por que?",
+        "Existe alguma coisa que voce gostaria de mudar em si mesmo?",
+        "Quando voce percebe que esta perdendo o controle, o que costuma fazer?",
+        "Qual foi a pior coisa que voce ja fez para sobreviver?",
+        "Voce acredita que merece a vida que tem hoje?",
+        "Se pudesse voltar para um unico momento da sua vida, qual seria?",
+        "O que realmente aconteceu na missao ID0890?",
+        "O que a morte dos seus pais mudou em voce?",
+        "Se Jullius descobrisse tudo sobre o seu passado, voce teria medo de perde-lo?",
+        "Se voce tivesse que escolher entre sua propria vida e a de Jullius, o que faria?"
     ],
+    
+    // ID 089 - Julius Topuria
     "089": [
-        "O que significa vencer para alguem que ja perdeu tudo?",
-        "Voce luta para provar algo para alguem... ou para si mesmo?",
-        "A gloria ainda tem o mesmo gosto de antes?"
+        "O que a luta significa para voce alem de vencer?",
+        "Qual foi a pessoa que mais acreditou em voce antes de voce se tornar quem e hoje?",
+        "O que voce mais sente falta da sua antiga vida na policia?",
+        "Por que Jason e alguem importante para voce?",
+        "O que voce faria se Jason estivesse em perigo e voce soubesse que nao poderia salva-lo sozinho?",
+        "Voce acha que se tornou uma pessoa diferente depois de abandonar a policia?",
+        "Existe alguma coisa que voce sente culpa por ter feito ou deixado de fazer?",
+        "Quando voce perde alguem, como costuma lidar com isso?",
+        "Voce ainda acredita que poderia ter salvado seu parceiro e sua esposa?",
+        "O que voce sente quando pensa no grupo que matou as pessoas que amava?",
+        "Voce busca conquistar algo por voce mesmo ou para provar algo a alguem?",
+        "Se tivesse a oportunidade de encontrar os responsaveis pelas mortes, o que faria?",
+        "O que voce nunca contou a Jason sobre o seu passado?",
+        "Se Jason estivesse prestes a morrer, voce seria capaz de abandonar tudo para salva-lo?",
+        "Se um dia voce tivesse que escolher entre conquistar seu maior sonho e salvar alguem que ama, qual escolheria?"
     ],
-    "001": [
-        "Voce ainda lembra da senha da Instalacao 9?",
-        "O Projeto Lazarus foi iniciado por voce?",
-        "A culpa pelo que aconteceu... e sua?"
-    ]
+    
+    // ID 073 - Sasha Arantes
+    "073": [
+        "Voce consegue perceber quando alguem esta triste, mesmo quando essa pessoa sorri?",
+        "Existe alguem por quem voce mudaria completamente quem voce e?",
+        "Voce ja fingiu estar bem porque sabia que outra pessoa precisava que voce estivesse?",
+        "Qual foi a maior confusao em que ja se meteu?",
+        "Existe alguma pessoa que sempre consegue fazer voce sorrir?",
+        "Voce acha que as pessoas costumam entender quem voce realmente e?",
+        "Voce ja fingiu estar feliz para nao preocupar alguem?",
+        "Se pudesse proteger uma unica pessoa pelo resto da vida, quem escolheria?",
+        "Voce sente que precisa ser forte por alguem?",
+        "Existe alguma coisa que voce gostaria que sua irma soubesse, mas nunca conseguiu dizer?",
+        "Quando foi a ultima vez que voce percebeu que sua irma estava triste antes dela falar qualquer coisa?",
+        "Se pudesse reviver um unico momento com sua mae, qual escolheria?",
+        "Se alguem machucasse sua irma e depois implorasse por perdao... voce conseguiria olhar para essa pessoa sem sentir raiva?",
+        "Se sua irma dissesse que precisa desaparecer para proteger voce, voce respeitaria a decisao dela?",
+        "Imagine que sua irma perdeu todas as lembrancas de voces duas. Ela sorri para voce como sorri para qualquer estranho. Voce tentaria faze-la lembrar... ou deixaria que ela tivesse uma vida feliz, mesmo que nela nao existisse espaco para voce?"
+    ],
+    
+    // ID 074 - Yamato Hanabi
+    "074": [
+        "Quando foi a ultima vez que voce precisou esconder uma emocao para nao preocupar alguem?",
+        "Voce acredita que algumas pessoas carregam responsabilidades que nunca escolheram?",
+        "Existe alguem cuja felicidade voce considera mais importante do que a sua?",
+        "O que faz voce perder a paciencia mais rapido?",
+        "Voce acredita que inteligencia e algo que nasce com a pessoa ou pode ser construida?",
+        "Quando precisa escolher entre logica e emocao, qual costuma vencer?",
+        "Voce ja escondeu uma verdade para proteger alguem?",
+        "Existe alguma pessoa que voce sente que depende de voce para continuar bem?",
+        "Voce sente que vive a vida que gostaria de viver?",
+        "Se pudesse voltar a um unico dia da sua vida sem mudar nada, apenas revive-lo, qual seria?",
+        "Qual foi a ultima vez que voce chorou completamente sozinha?",
+        "Existe alguma culpa que voce acredita nunca conseguir superar?",
+        "Se alguem dissesse que pode salvar milhoes de pessoas, mas sua irma morreria no processo, quanto tempo voce demoraria para responder?",
+        "Voce ainda seria a mesma pessoa se deixasse de proteger quem ama?",
+        "Se sua irma esquecesse completamente quem voce e... voce aceitaria viver ao lado dela sabendo que ela nunca mais voltara a lembrar do seu nome?"
+    ],
 };
