@@ -10,7 +10,7 @@ const subjects = {
         // ID de verificação (senha do sujeito)
         codigo: "P0320"
     },
-    "Glauber Ferreira Amado": {
+    "glauber ferreira amado": {
         id: "032",
         numero: "032",
         estado: "HOST",
@@ -20,14 +20,14 @@ const subjects = {
         titulo: "ATLAS",
         codigo: "P0320"
     },
-    "Marcus Oliver": {
+    "marcus oliver": {
         id: "045",
         numero: "045",
         estado: "HOST",
         relacao: "VECTOR",
         codigo: "P0455"
     },
-    "Jason Maclam": {
+    "jason maclam": {
         id: "078",
         numero: "078",
         estado: "FREE",
@@ -35,7 +35,7 @@ const subjects = {
         idade: "30",
         codigo: "P0788"
     },
-    "Julius Topuria": {
+    "julius topuria": {
         id: "089",
         numero: "089",
         estado: "FREE",
@@ -44,7 +44,7 @@ const subjects = {
         codigo: "P0890"
     },
 
-    "Sasha Arantes Hanabi": {
+    "sasha arantes hanabi": {
         id: "073",
         numero: "073",
         estado: "FREE",
@@ -53,7 +53,7 @@ const subjects = {
         codigo: "P0730"
     },
 
-    "Yamato Hanabi": {
+    "yamato hanabi": {
         id: "074",
         numero: "074",
         estado: "HOST",

@@ -6,7 +6,7 @@ let categoriaAtual = "";
 let perguntasNaCategoria = 0;
 let perguntasRespondidasNaCategoria = 0;
 let categoriasConcluidas = [];
-let modoTeste = true;
+let modoTeste = false;
 
 const screen = document.getElementById("screen");
 const bg = document.getElementById("background");
