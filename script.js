@@ -1726,9 +1726,11 @@ async function fim() {
                 <button onclick="mostrarEdenMenu()" style="flex:1; padding: 12px; background: black; color: #666; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 14px;">
                     [ VOLTAR AO EDEN ]
                 </button>
+                ${window.usuarioEden?.nivel === "OMEGA" || isAdmin ? `
                 <button onclick="if(typeof mostrarPainelAdmin === 'function') mostrarPainelAdmin()" style="flex:1; padding: 12px; background: black; color: #ffaa00; border: 1px solid #ffaa00; cursor: pointer; font-family: Consolas, monospace; font-size: 14px;">
                     [ ADMIN - OMEGA-5 ]
                 </button>
+                ` : ''}
             </div>
         </div>
     `;

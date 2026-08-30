@@ -230,7 +230,7 @@ const questions = [
     {
         id: "quebra_3",
         category: "[QUEBRA-CABECA]",
-        question: "Qual destas palavras parece mais familiar? Laz████████, E████████en, Or████████us, ████████",
+        question: "Qual destas palavras parece mais familiar? Laz████████, E████████en, Or██",
         type: "text"
     },
     {
