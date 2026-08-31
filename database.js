@@ -35,7 +35,7 @@ const subjects = {
         idade: "30",
         codigo: "P0788"
     },
-    "julius topuria": {
+    "jullius topuria": {
         id: "089",
         numero: "089",
         estado: "FREE",
@@ -60,6 +60,15 @@ const subjects = {
         relacao: "VECTOR",
         idade: "17",
         codigo: "P0740"
+    },
+
+    "jhonatan santos": {
+        id: "097",
+        numero: "097",
+        estado: "FREE",
+        relacao: "NONE",
+        idade: "21",
+        codigo: "P0730"
     },
 
     "zomboid": {

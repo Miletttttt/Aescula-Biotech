@@ -29,7 +29,7 @@ function toggleGlitchMode() {
 
 const mensagensGlitchList = [
     "Voce esta ouvindo?",
-    "Voce se lembra dele?",
+    "Voce se lembra dele",
     "Tudo vai ficar bem",
     "Morra",
     "ACORDE",

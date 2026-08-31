@@ -274,7 +274,7 @@ const perguntasPersonalizadas = {
         "Se pudesse voltar a arena sabendo o que aconteceria, voce ainda entraria?",
         "Qual foi o momento exato em que voce deixou de ser a vitima?",
         "Voce luta para proteger pessoas... ou porque descobriu que gosta de vencer?",
-        "Voce ainda consegue distinguir quando esta lutando por necessidade e quando e porque quer?",
+        "Voce ainda consegue distinguir quando esta lutando por necessidade e quando e por que quer?",
         "Quando alguem o chama de monstro, o que mais incomoda? O insulto... ou a possibilidade de estarem certos?",
         "Naquela arena, quem morreu primeiro: seu oponente... ou o garoto que jurou nunca tirar uma vida?"
     ],
