@@ -373,4 +373,19 @@ const perguntasPersonalizadas = {
         "Voce ainda seria a mesma pessoa se deixasse de proteger quem ama?",
         "Se sua irma esquecesse completamente quem voce e... voce aceitaria viver ao lado dela sabendo que ela nunca mais voltara a lembrar do seu nome?"
     ],
+
+
+    // id 097 - Jhonatan Santos
+    "097": [
+        "Por que voce prefere estar longe das pessoas?",
+        "O que voce encontra nas montanhas que nunca conseguiu encontrar perto de outras pessoas?",
+        "Voce se considera uma pessoa solitaria... ou apenas cansada de conviver com os outros?",
+        "Por que seu cachorro se tornou a coisa mais importante da sua vida?",
+        "Voce acredita que os animais conseguem entender coisas que os seres humanos nao conseguem?",
+        "Se precisasse escolher entre salvar seu cachorro ou salvar uma pessoa desconhecida, voce hesitaria?",
+        "Voce ja perdeu alguem importante antes de adotar seu cachorro?",
+        "Quando foi a ultima vez que alguem fez voce se sentir verdadeiramente compreendido?",
+        "Se seu cachorro desaparecesse sem deixar nenhum rastro, ate onde voce estaria disposto a ir para encontra-lo?",
+        "Se um dia ele deixasse de reconhecer voce... voce ainda conseguiria reconhecer a si mesmo?"
+    ]
 };

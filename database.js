@@ -27,7 +27,7 @@ const subjects = {
         relacao: "VECTOR",
         codigo: "P0455"
     },
-    "jason maclam": {
+    "jason maclam xavier": {
         id: "078",
         numero: "078",
         estado: "FREE",
@@ -35,7 +35,7 @@ const subjects = {
         idade: "30",
         codigo: "P0788"
     },
-    "jullius topuria": {
+    "jullius topuria magalhães": {
         id: "089",
         numero: "089",
         estado: "FREE",
@@ -53,7 +53,7 @@ const subjects = {
         codigo: "P0730"
     },
 
-    "yamato hanabi": {
+    "yamato hanabi arantes": {
         id: "074",
         numero: "074",
         estado: "HOST",
@@ -62,7 +62,7 @@ const subjects = {
         codigo: "P0740"
     },
 
-    "jhonatan santos": {
+    "jhonatan santos siqueira": {
         id: "097",
         numero: "097",
         estado: "FREE",
