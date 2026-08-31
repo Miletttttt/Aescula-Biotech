@@ -73,7 +73,7 @@ function transicaoTela(callback) {
     }, 200);
 }
 
-// ========== FUNÇÃO PARA ATUALIZAR CONTEÚDO ==========
+// ========== ATUALIZAR CONTEÚDO ==========
 function atualizarConteudoEden(html) {
     const container = document.getElementById('edenContent');
     if (!container) {

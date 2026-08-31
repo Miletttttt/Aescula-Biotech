@@ -13,9 +13,9 @@ function enableAudio() {
                 audioCtx.resume();
             }
             audioEnabled = true;
-            console.log('✅ Áudio ativado!');
+            console.log('Áudio ativado!');
         } catch(e) {
-            console.log('❌ Erro ao ativar áudio:', e);
+            console.log('Erro ao ativar áudio:', e);
         }
     }
 }
@@ -107,7 +107,6 @@ function playStaticSound() {
             audioCtx.resume();
         }
         
-        // Cria ruído branco contínuo
         const bufferSize = audioCtx.sampleRate * 0.1;
         const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
         const data = buffer.getChannelData(0);
@@ -134,7 +133,6 @@ function playStaticSound() {
         
         staticNoise.start(audioCtx.currentTime);
         
-        // Efeito de "varredura" na estática (muda a frequência lentamente)
         let freq = 800;
         const freqInterval = setInterval(() => {
             if (staticNoise) {
@@ -145,7 +143,6 @@ function playStaticSound() {
             }
         }, 500);
         
-        // Guarda o intervalo para limpar depois
         if (staticSound) {
             clearInterval(staticSound);
         }
@@ -199,7 +196,6 @@ function playZomboidSpamSound() {
             audioCtx.resume();
         }
         
-        // Som mais agressivo que o panic sound, com distorção
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         const osc2 = audioCtx.createOscillator();
@@ -214,7 +210,6 @@ function playZomboidSpamSound() {
         osc3.connect(gain3);
         gain3.connect(audioCtx.destination);
         
-        // Primeiro som - agudo e cortante (como um alarme)
         osc.type = 'square';
         osc.frequency.setValueAtTime(1000 + Math.random() * 400, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(300 + Math.random() * 200, audioCtx.currentTime + 0.1);
@@ -222,8 +217,7 @@ function playZomboidSpamSound() {
         gain.gain.setValueAtTime(0, audioCtx.currentTime);
         gain.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 0.01);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
-        
-        // Segundo som - grave e pulsante
+       
         osc2.type = 'sawtooth';
         osc2.frequency.setValueAtTime(200, audioCtx.currentTime);
         osc2.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.2);
@@ -231,8 +225,7 @@ function playZomboidSpamSound() {
         gain2.gain.setValueAtTime(0, audioCtx.currentTime);
         gain2.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 0.03);
         gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
-        
-        // Terceiro som - ruído de estática (mais curto)
+      
         osc3.type = 'sawtooth';
         osc3.frequency.setValueAtTime(3000 + Math.random() * 2000, audioCtx.currentTime);
         osc3.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.05);
@@ -248,7 +241,7 @@ function playZomboidSpamSound() {
         osc3.start(audioCtx.currentTime + 0.05);
         osc3.stop(audioCtx.currentTime + 0.08);
         
-        // Pequeno "clique" de interferência
+        
         setTimeout(() => {
             try {
                 const click = audioCtx.createOscillator();
@@ -279,8 +272,7 @@ function playPanicSound() {
         if (audioCtx.state === 'suspended') {
             audioCtx.resume();
         }
-        
-        // Som de "pane" eletrônica - agudo e distorcido
+   
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         const osc2 = audioCtx.createOscillator();
@@ -291,7 +283,7 @@ function playPanicSound() {
         osc2.connect(gain2);
         gain2.connect(audioCtx.destination);
         
-        // Primeiro som - agudo e cortante
+      
         osc.type = 'square';
         osc.frequency.setValueAtTime(800 + Math.random() * 400, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(200 + Math.random() * 200, audioCtx.currentTime + 0.15);
@@ -300,7 +292,7 @@ function playPanicSound() {
         gain.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
         
-        // Segundo som - grave e distorcido
+       
         osc2.type = 'sawtooth';
         osc2.frequency.setValueAtTime(150, audioCtx.currentTime);
         osc2.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.25);
@@ -314,7 +306,6 @@ function playPanicSound() {
         osc2.start(audioCtx.currentTime + 0.05);
         osc2.stop(audioCtx.currentTime + 0.35);
         
-        // Pequeno "click" de estática no final
         setTimeout(() => {
             try {
                 const click = audioCtx.createOscillator();
@@ -336,7 +327,7 @@ function playPanicSound() {
     }
 }
 
-// ========== SOM DE GLITCH (JANELA ABRINDO) ==========
+// ========== SOM DE GLITCH ==========
 function playGlitchWindowSound() {
     try {
         if (!audioCtx) {
@@ -346,7 +337,6 @@ function playGlitchWindowSound() {
             audioCtx.resume();
         }
         
-        // Som de "abertura" de janela - digital e pulsante
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         const filter = audioCtx.createBiquadFilter();
@@ -375,7 +365,7 @@ function playGlitchWindowSound() {
     }
 }
 
-// ========== SOM DE SPAM (TEXTO DESCONTROLADO - GERAL) ==========
+// ========== SOM DE SPAM ==========
 function playSpamSound() {
     try {
         if (!audioCtx) {
@@ -385,7 +375,7 @@ function playSpamSound() {
             audioCtx.resume();
         }
         
-        // Som de "estática" rápida - tipo interferência
+        
         const bufferSize = audioCtx.sampleRate * 0.05;
         const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
         const data = buffer.getChannelData(0);
@@ -412,7 +402,7 @@ function playSpamSound() {
         noise.start(audioCtx.currentTime);
         noise.stop(audioCtx.currentTime + 0.06);
         
-        // Pequeno "pip" no final
+     
         setTimeout(() => {
             try {
                 const osc = audioCtx.createOscillator();
@@ -434,7 +424,7 @@ function playSpamSound() {
     }
 }
 
-// ========== SOM DE CLIMAX (MENSAGEM FINAL) ==========
+// ========== SOM DE MENSAGEM FINAL ==========
 function playClimaxSound() {
     try {
         if (!audioCtx) {
@@ -444,7 +434,6 @@ function playClimaxSound() {
             audioCtx.resume();
         }
         
-        // Som de "revelação" - subindo e suave
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         const osc2 = audioCtx.createOscillator();
@@ -455,7 +444,6 @@ function playClimaxSound() {
         osc2.connect(gain2);
         gain2.connect(audioCtx.destination);
         
-        // Primeiro - subida suave
         osc.type = 'sine';
         osc.frequency.setValueAtTime(200, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.5);
@@ -464,7 +452,6 @@ function playClimaxSound() {
         gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.05);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
         
-        // Segundo - harmônico
         osc2.type = 'sine';
         osc2.frequency.setValueAtTime(400, audioCtx.currentTime);
         osc2.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.5);
@@ -483,7 +470,7 @@ function playClimaxSound() {
     }
 }
 
-// ========== SOM DE "TRAVAMENTO" FINAL ==========
+// ========== SOM DE TRAVAMENTO ==========
 function playCrashSound() {
     try {
         if (!audioCtx) {
@@ -532,7 +519,7 @@ function playCrashSound() {
     }
 }
 
-// ========== SOM DE CONCLUSÃO DE CATEGORIA (MAIS ÉPICO) ==========
+// ========== SOM DE CONCLUSÃO DE CATEGORIA ==========
 function playCategoryCompleteSound() {
     try {
         if (!audioCtx) {
@@ -648,7 +635,7 @@ function playAnalysisCompleteSound() {
     } catch(e) {}
 }
 
-// ========== VOZ ROBÓTICA - EDEN ==========
+// ========== ROBÓTICA - EDEN ==========
 function playEdenVoice() {
     try {
         if (!audioCtx) {

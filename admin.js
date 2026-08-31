@@ -1016,7 +1016,7 @@ function sairAdmin() {
             terminal.style.maxHeight = "none";
             terminal.style.transition = "all 0.5s ease";
         }
-        // Volta para o menu EDEN em vez de mostrarFormulario()
+        // Volta para o menu EDEN
         mostrarEdenMenu();
     }, 400);
-}   
+}

@@ -3,11 +3,10 @@
 // quando o jogador digita "zomboid" no login.
 
 async function sequenciaZomboid() {
-    // ========== INICIA A ESTÁTICA ==========
+    
     if (typeof playStaticSound === 'function') {
         playStaticSound();
     }
-    // TRAVA A TELA POR 3 SEGUNDOS
     screen.innerHTML = `
         <div style="
             display: flex;
@@ -26,7 +25,6 @@ async function sequenciaZomboid() {
     
     await esperar(3000);
     
-    // LIMPA E MOSTRA A MENSAGEM INICIAL
     screen.innerHTML = "";
     await escrever("");
     await escrever("════════════════════════════════════════");
@@ -39,7 +37,6 @@ async function sequenciaZomboid() {
     
     await esperar(5000);
     
-    // LIMPA E MOSTRA A PRÓXIMA MENSAGEM
     screen.innerHTML = "";
     await escrever("", 50);
     await escrever(`   Voce realmente ainda utiliza o nome "Zomboid"?`);
@@ -53,7 +50,6 @@ async function sequenciaZomboid() {
     
     await esperar(3000);
     
-    // MENSAGENS RÁPIDAS (UMA POR VEZ) - COM SOM DE PANE
     const mensagens = [
         "Faz 4 anos.",
         "4 anos desde sua demissao.",
@@ -61,7 +57,6 @@ async function sequenciaZomboid() {
         "Voce se lembra da ultima conversa que tivemos?"
     ];
     
-    // SEQUÊNCIA COM PISCADAS
     screen.innerHTML = "";
     playPanicSound();
     await escrever("", 50);
@@ -95,7 +90,6 @@ async function sequenciaZomboid() {
     await escrever("   compreendeu o que estavamos construindo.");
     await esperar(2000);
     
-    // POPUPS (MENSAGENS CENTRALIZADAS) - TODOS AO MESMO TEMPO
     const popups = [
         "Por que voce foi embora?",
         "Por que voce me deixou sozinho?",
@@ -142,7 +136,6 @@ async function sequenciaZomboid() {
         }, 4000);
     });
     
-    // JANELAS SOBRE JANELAS (TEXTO SPAM) - COM SOM DE GLITCH
     const textosSpam = [
         "Eu perdoaria sua covardia.",
         "Mas nao seu abandono.",
@@ -190,8 +183,7 @@ async function sequenciaZomboid() {
     });
     
     await esperar(4000);
-    
-    // ========== TEXTO DESCONTROLADO (SPAM CENTRALIZADO) ==========
+
     const spamTextos = [
         "VOCE FOI EMBORA.",
         "VOCE ME DEIXOU.",
@@ -199,10 +191,9 @@ async function sequenciaZomboid() {
         "VOCE ABANDONOU A HUMANIDADE."
     ];
     
-    // ========== TOCCA SOM DE SPAM PARA CADA TEXTO ==========
+    // ========== SOM DE SPAM ==========
     for (let i = 0; i < 30; i++) {
         setTimeout(() => {
-            // ========== TOCA O SOM DE SPAM ==========
             playZomboidSpamSound();
             
             const spamDiv = document.createElement('div');
@@ -237,13 +228,12 @@ async function sequenciaZomboid() {
     
     await esperar(5000);
     
-    // LIMPA TODAS AS JANELAS
     janelas.forEach(janela => {
         if (janela.parentNode) janela.remove();
     });
     document.querySelectorAll('div[style*="z-index: 9997"]').forEach(el => el.remove());
     
-    // ÚLTIMA JANELA - CALMA E PEQUENA
+  
     screen.innerHTML = "";
     await escrever("", 50);
     await escrever("   Apesar de tudo...");
@@ -254,10 +244,9 @@ async function sequenciaZomboid() {
     await escrever("");
     await esperar(3000);
     
-    // ========== PARA A ESTÁTICA ==========
+   
     stopStaticSound();
     
-    // FECHA TUDO
     playCrashSound();
     screen.innerHTML = `
         <div style="
@@ -277,7 +266,6 @@ async function sequenciaZomboid() {
     
     await esperar(2000);
     
-    // TRAVA O NAVEGADOR (SIMULA)
     document.body.style.backgroundColor = '#000';
     document.body.innerHTML = `
         <div style="

@@ -5,7 +5,7 @@ function esperar(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// ========== ESCREVER COM EFEITO DE DIGITAÇÃO (VELOCIDADE AJUSTÁVEL) ==========
+// ========== ESCREVER COM EFEITO DE DIGITAÇÃO ==========
 async function escrever(texto, vel = 25, limpar = false, pausaEntreLinhas = 200) {
     return new Promise(resolve => {
         if (limpar) {
