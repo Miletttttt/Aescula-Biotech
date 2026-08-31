@@ -39,7 +39,10 @@ const mensagensGlitchList = [
     "CORRA",
     "Respire fundo",
     "Isso nao e real",
-    "A entidade esta aqui"
+    "Está em você",
+    "ID0890",
+    "Sua mão sentiria desgosto.",
+    "O mundo será um lugar melhor."
 ];
 
 function mostrarPopupGlitch(mensagem) {
