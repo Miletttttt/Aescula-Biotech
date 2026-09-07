@@ -12,7 +12,7 @@ const usuariosEDEN = {
     "pesquisa@aesculacorp.com": {
         nome: "Pesquisador",
         nivel: "CLASSE-B",
-        senha: "research2029",
+        senha: "CBMBRGPESQUISA",
         saudacao: "Bem-vindo, Pesquisador.",
         frase: null
     },
@@ -133,7 +133,7 @@ function mostrarEdenMenu() {
                 
                 <div style="border-top: 1px solid #333; padding-top: 10px; text-align: center;">
                     <div style="color: #333; font-size: 10px; letter-spacing: 2px;">
-                        AESCULA BIOTECH INDUSTRIES — v.3.0
+                        AESCULA BIOTECH INDUSTRIES — v.3.2.13.2.18.7.16.5.19.17.21.9.19.1
                     </div>
                 </div>
                 
@@ -550,13 +550,13 @@ function mostrarEdenDashboard(usuario) {
                         [ PORTADORES ]
                     </button>
                     <button onclick="mostrarEdenLazarus()" style="padding: 8px 15px; background: transparent; color: #ff1a1a; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 11px; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff1a1a'; this.style.color='#ff4444';" onmouseout="this.style.borderColor='#333'; this.style.color='#ff1a1a';">
-                        [ LAZARUS ]
+                        [ TGF6YXJ1cw== ]
                     </button>
                     <button onclick="mostrarEdenAdam()" style="padding: 8px 15px; background: transparent; color: #ff1a1a; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 11px; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff1a1a'; this.style.color='#ff4444';" onmouseout="this.style.borderColor='#333'; this.style.color='#ff1a1a';">
-                        [ ADAM ]
+                        [ ████ ]
                     </button>
                     <button onclick="mostrarEdenEva()" style="padding: 8px 15px; background: transparent; color: #ff1a1a; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 11px; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff1a1a'; this.style.color='#ff4444';" onmouseout="this.style.borderColor='#333'; this.style.color='#ff1a1a';">
-                        [ EVA ]
+                        [ ███ ]
                     </button>
                     <button onclick="mostrarEdenSecurity()" style="padding: 8px 15px; background: transparent; color: #ff1a1a; border: 1px solid #333; cursor: pointer; font-family: Consolas, monospace; font-size: 11px; transition: all 0.3s;" onmouseover="this.style.borderColor='#ff1a1a'; this.style.color='#ff4444';" onmouseout="this.style.borderColor='#333'; this.style.color='#ff1a1a';">
                         [ SEGURANÇA ]
@@ -625,10 +625,10 @@ function mostrarEdenProjects() {
     atualizarConteudoEden(`
         <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">PROJETOS ATIVOS</div>
         <div style="color: #888; font-size: 13px; line-height: 2;">
-            • <span style="color: #ff1a1a;">Projeto Lazarus</span> — Adaptação Genética (Ativo)<br>
-            • <span style="color: #ff1a1a;">Projeto A.D.A.M.</span> — Biologia Sintética (Ativo)<br>
-            • <span style="color: #ff1a1a;">Projeto E.V.A.</span> — Protocolos Evolutivos (Pausado)<br>
-            • <span style="color: #666;">Projeto Prometheus</span> — Mapeamento Neural (Planejamento)
+            • <span style="color: #ff1a1a;">███████████████</span> — A█████ção ███████a (Ativo)<br>
+            • <span style="color: #ff1a1a;">P█████████████M█</span> — Bi████ia S██té████ (Ativo)<br>
+            • <span style="color: #ff1a1a;">███j███ E█████</span> — P██████los E███████o█ (Pausado)<br>
+            • <span style="color: #666;">P██████ Pr█m█th███</span> — Ma████████ Neu███ (Planejamento)
         </div>
     `);
 }
@@ -651,10 +651,10 @@ function mostrarEdenPortadores() {
     atualizarConteudoEden(`
         <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">PORTADORES</div>
         <div style="color: #888; font-size: 13px; line-height: 2;">
-            • <span style="color: #ff1a1a;">032 — Glauber F. Amado</span> — Hospedeiro — Vetor<br>
-            • <span style="color: #ff1a1a;">045 — Marcus Oliver</span> — Hospedeiro — Vetor<br>
-            • <span style="color: #666;">078 — Jason MacLam</span> — Livre de Vírus<br>
-            • <span style="color: #666;">089 — Julius Topuria</span> — Livre de Vírus
+            • <span style="color: #ff1a1a;">Sujeito 032 — 7-12-1-21-2-5-18 1-13-1-4-15</span> — Ho█p█████o — Vetor<br>
+            • <span style="color: #ff1a1a;">045 — 13-1-18-3-21-19 15-12-9-22-5-18</span> — ████████ro — Vetor<br>
+            • <span style="color: #666;">078 — 10-1-19-15-14 13-1-3-12-1-13</span> — Livre<br>
+            • <span style="color: #666;">089 — 10-21-12-9-21-19 20-15-16-21-18-9-1</span> — Livre 
         </div>
     `);
 }
@@ -662,13 +662,13 @@ function mostrarEdenPortadores() {
 function mostrarEdenLazarus() {
     playNavSound();
     atualizarConteudoEden(`
-        <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">PROJETO LAZARUS</div>
+        <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">█████TO LAZ███S</div>
         <div style="color: #888; font-size: 13px; line-height: 1.8;">
             <span style="color: #ff1a1a;">Status:</span> Ativo — Fase 3<br>
-            <span style="color: #ff1a1a;">Objetivo:</span> Adaptação genética avançada em sujeitos humanos<br>
-            <span style="color: #ff1a1a;">Sujeitos:</span> 47 inscritos — 12 hospedeiros confirmados<br>
-            <span style="color: #ff1a1a;">Líder:</span> Dr. Matthias Bergman<br><br>
-            <span style="color: #666; font-size: 12px;">"A evolução é lenta demais." — M.B.</span>
+            <span style="color: #ff1a1a;">Objetivo:</span> Adaptação Z2Vuw6l0aWNh avançada em c3VqZWl0b3MgaHVtYW5vcy4K<br>
+            <span style="color: #ff1a1a;">Sujeitos:</span> 47 inscritos — 12 aG9zcGVkZWlyb3M= confirmados<br>
+            <span style="color: #ff1a1a;">Líder:</span> Dr. M███████ ██████n<br><br>
+            <span style="color: #666; font-size: 12px;">"Isaías 45:7" — ████</span>
         </div>
     `);
 }
@@ -676,12 +676,12 @@ function mostrarEdenLazarus() {
 function mostrarEdenAdam() {
     playNavSound();
     atualizarConteudoEden(`
-        <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">PROJETO A.D.A.M.</div>
+        <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">cHJvamV0bw== ████A.M.</div>
         <div style="color: #888; font-size: 13px; line-height: 1.8;">
             <span style="color: #ff1a1a;">Status:</span> Ativo — Fase de Pesquisa<br>
-            <span style="color: #ff1a1a;">Objetivo:</span> Desenvolvimento de sistemas biológicos sintéticos<br>
-            <span style="color: #ff1a1a;">Líder:</span> Dr. Matthias Bergman<br><br>
-            <span style="color: #666; font-size: 12px;">"A perfeição não é descoberta. Ela é projetada." — M.B.</span>
+            <span style="color: #ff1a1a;">Objetivo:</span> Desenvolvimento de sistemas ██████████ ██████████<br>
+            <span style="color: #ff1a1a;">Líder:</span> ██. ████████ B██████<br><br>
+            <span style="color: #666; font-size: 12px;">"A perfeição não é descoberta. Ela é projetada." — ███.</span>
         </div>
     `);
 }
@@ -689,12 +689,12 @@ function mostrarEdenAdam() {
 function mostrarEdenEva() {
     playNavSound();
     atualizarConteudoEden(`
-        <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">PROJETO E.V.A.</div>
+        <div style="color: #ffaa00; font-size: 14px; margin-bottom: 10px;">cHJvamV0bw== ██████</div>
         <div style="color: #888; font-size: 13px; line-height: 1.8;">
             <span style="color: #ffaa00;">Status:</span> Pausado — Revisão Necessária<br>
             <span style="color: #ff1a1a;">Objetivo:</span> Protocolos de adaptação evolutiva<br>
-            <span style="color: #ff1a1a;">Líder:</span> Dr. Matthias Bergman<br><br>
-            <span style="color: #666; font-size: 12px;">"Toda criação começa com uma única célula." — M.B.</span>
+            <span style="color: #ff1a1a;">Líder:</span> RHIuIE1hdHRoaWFzIEJlcmdtYW4=<br><br>
+            <span style="color: #666; font-size: 12px;">"Toda criação começa com uma █████ ███████████████</span>
         </div>
     `);
 }

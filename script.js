@@ -16,7 +16,7 @@ const palavras = [
     "PROJECT", "HOST", "BIOHAZARD", "ERROR", "ACCESS", 
     "CELL", "DNA", "SPECIMEN", "INFECTED", "NULL", 
     "████", "010101", "SYSTEM", "CORE", "MATRIX", "GHOST",
-    "LAZARUS", "HELIX", "EDEN", "ORPHEUS", "PROTOCOL"
+    "LAZARUS", "HELIX", "EDEN", "ORPHEUS", "PROTOCOL", "QSBtb3J0ZSBuw6NvIMOpIG8gZmltLg=="
 ];
 
 // ========== ESCONDER O TERMINAL INICIALMENTE ==========

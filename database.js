@@ -63,12 +63,21 @@ const subjects = {
     },
 
     "jhonatan santos siqueira": {
-        id: "097",
-        numero: "097",
+        id: "087",
+        numero: "087",
         estado: "FREE",
         relacao: "NONE",
         idade: "21",
-        codigo: "P0730"
+        codigo: "P0870"
+    },
+
+    "celestia yang de carvalho silva": {
+        id: "039",
+        numero: "039",
+        estado: "FREE",
+        relacao: "NONE",
+        idade: "21",
+        codigo: "P0394"
     },
 
     "zomboid": {

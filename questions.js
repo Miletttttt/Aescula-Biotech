@@ -374,7 +374,6 @@ const perguntasPersonalizadas = {
         "Se sua irma esquecesse completamente quem voce e... voce aceitaria viver ao lado dela sabendo que ela nunca mais voltara a lembrar do seu nome?"
     ],
 
-
     // id 097 - Jhonatan Santos
     "097": [
         "Por que voce prefere estar longe das pessoas?",
@@ -387,5 +386,24 @@ const perguntasPersonalizadas = {
         "Quando foi a ultima vez que alguem fez voce se sentir verdadeiramente compreendido?",
         "Se seu cachorro desaparecesse sem deixar nenhum rastro, ate onde voce estaria disposto a ir para encontra-lo?",
         "Se um dia ele deixasse de reconhecer voce... voce ainda conseguiria reconhecer a si mesmo?"
+    ],
+
+    "033": [
+        "Quando voce percebeu que seus pais nao eram as pessoas que acreditava que fossem?",
+        "Voce acredita que seria uma pessoa diferente se Ale ainda estivesse vivo?",
+        "Por que voce escolheu trabalhar salvando pessoas?",
+        "Voce confia mais naquilo que consegue fazer sozinha do que nas pessoas ao seu redor?",
+        "Quando voce pensa em liberdade, do que exatamente voce acredita que esta tentando fugir?",
+        "Seus pais realmente tiraram algo de voce... ou voce ainda esta permitindo que eles controlem sua vida?",
+        "Se Ale aparecesse novamente na sua frente, voce acreditaria imediatamente que era ele?",
+        "Se pudesse impedir a morte de uma pessoa desconhecida, mas isso significasse perder algo que restou de Ale, voce aceitaria?",
+        "Voce ja desejou que alguem morresse e depois tentou justificar esse pensamento para si mesma?",
+        "Voce acredita que salvar uma vida torna uma pessoa automaticamente boa?",
+        "Se os fins sempre justificam os meios, existe alguma coisa que voce realmente nao faria?",
+        "Voce ainda guarda a pulseira de Ale porque sente saudade dele... ou porque tem medo de esquece-lo?",
+        "Seus pais fizeram algo imperdoavel. Mas voce tem certeza de que sabe toda a verdade?",
+        "Se Ale pudesse voltar, mas voltasse diferente, ferido ou irreconhecivel, voce ainda tentaria trazê-lo de volta?",
+        "Se tivesse a oportunidade de trazer Ale de volta, sabendo que outra pessoa teria que ocupar o lugar dele, voce aceitaria?"
     ]
+
 };

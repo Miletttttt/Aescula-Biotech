@@ -63,6 +63,43 @@ body {
     transition: color 0.1s, transform 0.1s;
 }
 
+/* ========== TEXTO ESCONDIDO (SÓ VISÍVEL SELECIONANDO) ========== */
+#hiddenText {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    transform: none;
+}
+
+#hiddenText::selection {
+    color: #ff1a1a;
+    background: rgba(255, 0, 0, 0.05);
+}
+
+/* Efeito "fantasma" - quase invisível */
+#hiddenText {
+    color: #000000;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Quando o usuário passa o mouse, fica um pouco mais visível (opcional) */
+#hiddenText:hover {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+    #hiddenText {
+        font-size: 8px;
+        bottom: 15px;
+        white-space: normal;
+        max-width: 90vw;
+        text-align: center;
+        line-height: 1.5;
+    }
+}
+
 /* ========== CURSOR PISCANTE ========== */
 .cursor {
     display: inline-block;
