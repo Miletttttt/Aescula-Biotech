@@ -653,8 +653,10 @@ function mostrarEdenPortadores() {
         <div style="color: #888; font-size: 13px; line-height: 2;">
             • <span style="color: #ff1a1a;">Sujeito 032 — 7-12-1-21-2-5-18 1-13-1-4-15</span> — Ho█p█████o — Vetor<br>
             • <span style="color: #ff1a1a;">045 — 13-1-18-3-21-19 15-12-9-22-5-18</span> — ████████ro — Vetor<br>
+            • <span style="color: #ff1a1a;">074 — 25-1-13-1-20-15 8-1-14-1-2-9</span> — ██s█████ro — Vetor<br>
             • <span style="color: #666;">078 — 10-1-19-15-14 13-1-3-12-1-13</span> — Livre<br>
-            • <span style="color: #666;">089 — 10-21-12-9-21-19 20-15-16-21-18-9-1</span> — Livre 
+            • <span style="color: #666;">073 — 19-1-19-8-1 1-18-1-14-20-5-19</span> — Livre<br>
+            • <span style="color: #666;">039 — 3-5-12-5-19-20-9-1 25-1-14-7</span> — Livre<br>
         </div>
     `);
 }
