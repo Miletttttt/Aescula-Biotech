@@ -388,7 +388,7 @@ const perguntasPersonalizadas = {
         "Se um dia ele deixasse de reconhecer voce... voce ainda conseguiria reconhecer a si mesmo?"
     ],
 
-    "033": [
+    "039": [
         "Quando voce percebeu que seus pais nao eram as pessoas que acreditava que fossem?",
         "Voce acredita que seria uma pessoa diferente se Ale ainda estivesse vivo?",
         "Por que voce escolheu trabalhar salvando pessoas?",
