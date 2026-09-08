@@ -369,10 +369,11 @@ function processarLogin() {
         btn.style.cursor = 'default';
     }
     
+
     playSubmitSound();
     
     const email = document.getElementById('loginEmail').value.trim();
-    const senha = document.getElementById('loginPassword').value.trim();
+    const senha = document.getElementById('loginPassword').value.trim().toUpperCase();
     
     if (!email || !senha) {
         playEmptyFieldSound();

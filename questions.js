@@ -375,7 +375,7 @@ const perguntasPersonalizadas = {
     ],
 
     // id 097 - Jhonatan Santos
-    "097": [
+    "087": [
         "Por que voce prefere estar longe das pessoas?",
         "O que voce encontra nas montanhas que nunca conseguiu encontrar perto de outras pessoas?",
         "Voce se considera uma pessoa solitaria... ou apenas cansada de conviver com os outros?",
