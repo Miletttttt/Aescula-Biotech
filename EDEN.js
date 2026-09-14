@@ -25,7 +25,7 @@ const usuariosEDEN = {
     }
 };
 
-// ========== CONTROLE DE CLICK ÚNICO ==========
+// ========== CONTROLE DE CLICK ÚNICO ========== (COPIAR PRA PROXIMOS PROJETOS)
 let botoesClicados = new Set();
 
 function resetarBotoes() {
@@ -226,13 +226,12 @@ function mostrarResearchOmega() {
 function mostrarVolunteer() {
     playButtonClickSound();
     
-    // Limpa o container do EDEN
+
     const container = document.getElementById('edenContent');
     if (container) {
         container.innerHTML = '';
     }
     
-    // Transição suave para o terminal
     transicaoTela(() => {
         iniciarTerminal();
     });
@@ -452,7 +451,7 @@ function processarLogin() {
     }
 }
 
-// ========== TELA DE BOAS-VINDAS OMEGA (ESTILO ORIGINAL) ==========
+// ========== TELA DE BOAS-VINDAS OMEGA ==========
 function mostrarEdenOmegaWelcome() {
     const usuario = window.usuarioEden;
     if (!usuario) return;
