@@ -418,7 +418,6 @@ function verificarSenha() {
     } else {
         playDeniedSound();
         
-        // MENSAGEM CENTRALIZADA
         const msgDiv = document.createElement('div');
         msgDiv.style.cssText = `
             position: fixed;
@@ -466,7 +465,7 @@ function fecharEdenModal() {
     mostrarPainelAdmin();
 }
 
-// ========== PAINEL ADMIN PRINCIPAL (ESTILO ORIGINAL) ==========
+// ========== PAINEL ADMIN PRINCIPA ==========
 function mostrarPainelAdmin() {
     const terminal = document.querySelector('.terminal');
     if (terminal) {
@@ -528,7 +527,7 @@ function mostrarPainelAdmin() {
     `;
 }
 
-// ========== RENDERIZAR ABA ==========
+// ========== RENDERIZR ABA ==========
 function renderizarAba(aba) {
     switch(aba) {
         case 'dashboard': return renderDashboard();
