@@ -1,6 +1,5 @@
 // ========== FUNÇÕES UTILITÁRIAS ==========
 
-// ESPERA
 function esperar(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
