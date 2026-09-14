@@ -5,7 +5,7 @@ let glitchNivel = 0;
 let mensagemInterval = null;
 let mensagensAtivas = [];
 
-// ========== MODO DE ACESSIBILIDADE (APENAS FLASHES) ==========
+// ========== MODO DE ACESSIBILIDADE ==========
 let glitchSafeMode = false;
 
 function toggleGlitchMode() {
@@ -274,7 +274,6 @@ function ativarGlitch(nivel = 1) {
                 }, 30);
             }
             
-            // ========== MOVIMENTO BRUSCO (MANTIDO) ==========
             if (Math.random() < 0.08) {
                 const terminal = document.querySelector('.terminal');
                 if (terminal) {
