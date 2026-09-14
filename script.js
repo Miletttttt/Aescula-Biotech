@@ -57,7 +57,6 @@ function getNomeCategoria(categoria) {
     return nomesExibicao[categoria] || categoria;
 }
 
-// ========== VERIFICA SE É UMA PERGUNTA BLOQUEADA ==========
 function isPerguntaBloqueada(pergunta) {
     const idsBloqueados = [
         "organizacao_3",
@@ -142,7 +141,7 @@ async function iniciar() {
     mostrarFormulario();
 }
 
-// ========== INICIAR TERMINAL (CHAMADO PELO EDEN) ==========
+// ========== INICIAR TERMINAL ==========
 function iniciarTerminal() {
     const terminal = document.querySelector('.terminal');
     if (terminal) {
@@ -284,7 +283,7 @@ async function identificar() {
         return;
     }
 
-    // NOME VAZIO
+    // NOME VAZIO (Sem cadastro)
     if (!nome) {
         playEmptyFieldSound();
         
@@ -333,7 +332,6 @@ async function identificar() {
         return;
     }
 
-    // MATTHIAS REMOVIDO - AGORA VIA LOGIN EDEN
 
     if (subjects[nome]) {
         const s = subjects[nome];
@@ -798,8 +796,7 @@ function responderNao(isBloqueado) {
     telaLoading();
 }
 
-// ========== PROXIMA PERGUNTA (TEXT) ==========
-// ========== PROXIMA PERGUNTA (TEXT) ==========
+// ========== PROXIMA PERGUNTA ==========
 function proximaPergunta() {
     const btn = document.querySelector('button[onclick="proximaPergunta()"]');
     if (btn && btn.dataset.clicado === 'true') {
@@ -1459,7 +1456,7 @@ function responderNaoVisitante(isBloqueado) {
     telaLoadingVisitante();
 }
 
-// ========== PROXIMA PERGUNTA (TEXT) ==========
+// ========== PROXIMA PERGUNTA ==========
 function proximaPergunta() {
     const btn = document.querySelector('button[onclick="proximaPergunta()"]');
     if (btn && btn.dataset.clicado === 'true') {
@@ -1573,7 +1570,7 @@ async function telaLoadingVisitante() {
     mostrarPerguntaVisitante();
 }
 
-// ========== SOM DE NEGACAO ==========
+// ========== SOM DE NEGACAO ========== esuqeci de passar essa merad pro audio.js, nao me julguem
 function playDeniedSound() {
     if (!audioEnabled) return;
     try {
