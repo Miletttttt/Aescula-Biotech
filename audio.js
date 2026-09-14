@@ -20,7 +20,9 @@ function enableAudio() {
     }
 }
 
-// ========== EFEITO CYBERPUNK (SISTEMA) ==========
+// NAO CONSIGO PUXAR MP3 PRO SITE ENT FAÇO MEUS PRÓPRIOS SONS *FOGO* (mais da metadfe n fui eu q fiz, e eu sla mexer com isso)
+
+// ========== EFEITO PRO SISTEMA) ==========
 function playTypeSound_System() {
     if (!audioEnabled) return;
     try {
